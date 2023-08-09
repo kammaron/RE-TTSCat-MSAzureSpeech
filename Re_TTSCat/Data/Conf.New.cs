@@ -75,6 +75,9 @@ namespace Re_TTSCat.Data
             HttpAuth = false;
             HttpAuthPassword = "";
             HttpAuthUsername = "";
+            MSSpeechKey = "";
+            MSSpeechRegion = "";
+            MSVoice = 0;
             Headers = new List<Header>();
             ReqType = RequestType.JustGet;
             PostData = "";

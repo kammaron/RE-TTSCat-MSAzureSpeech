@@ -330,6 +330,13 @@ namespace Re_TTSCat.Data
         /// 当用户特别关注时的读出内容
         /// </summary>
         public string OnInteractSpecialFollow { get; set; }
+
+        public string MSSpeechKey { get; set; }
+
+        public string MSSpeechRegion { get; set; }
+
+        public byte MSVoice { get; set; }
+
         /// <summary>
         /// 语音答复规则列表
         /// </summary>

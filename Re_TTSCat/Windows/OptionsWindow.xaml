@@ -388,6 +388,7 @@
                                     <ComboBoxItem Content="有道（未经加密）" ToolTip="使用网易有道 TTS 引擎&#xA;&#xA;该引擎使用时与服务器的连接未经加密，请酌情使用"/>
                                     <ComboBoxItem Content="用户自定义引擎" ToolTip="使用您在右侧自定义的 TTS 引擎&#xA;&#xA;使用 $TTSTEXT 来代替需要读出的文本"/>
                                     <ComboBoxItem Content="百度（高级版）" ToolTip="使用百度高级 TTS 引擎&#xA;&#xA;您需要在右侧指定百度高级版语音合成引擎的 API 密钥，否则无法正常使用。"/>
+                                    <ComboBoxItem Content="微软" ToolTip="使用微软引擎&#xA;&#xA;您需要在右侧指定微软接入点区域和密钥，否则无法正常使用。"/>
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Margin="0,5,0,0">
@@ -498,6 +499,49 @@
                         <TextBox x:Name="TextBox_BaiduApiKey" FontFamily="Consolas" VerticalAlignment="Top" Margin="0,20,5,0" ToolTip="百度高级版引擎的 API 公钥" HorizontalAlignment="Right" Width="286" />
                         <local:IconTextBlock x:Name="TextBlock_BaiduApiSecretKey" Margin="0,41,161,0" IconGlyph="&#xF084;" Text="百度高级版 API 私钥" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
                         <PasswordBox x:Name="TextBox_BaiduApiSecretKey" VerticalAlignment="Top" Margin="0,56,5,0" ToolTip="百度高级版引擎的 API 私钥" HorizontalAlignment="Right" Width="286" />
+                        <local:IconTextBlock x:Name="TextBlock_MSSpeechRegion" Margin="0,115,161,0" IconGlyph="&#xF0C1;" Text="微软服务接入点" VerticalAlignment="Top" HorizontalAlignment="Right" Width="129"/>
+                        <TextBox x:Name="TextBox_MSSpeechRegion" FontFamily="Consolas" VerticalAlignment="Top" Margin="0,131,5,0" ToolTip="微软服务接入点" HorizontalAlignment="Right" Width="286" />
+                        <local:IconTextBlock x:Name="TextBlock_MSSpeechKey" Margin="0,150,161,0" IconGlyph="&#xF084;" Text="微软服务密钥" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
+                        <PasswordBox x:Name="TextBox_MSSpeechKey" VerticalAlignment="Top" Margin="0,166,5,0" ToolTip="微软服务密钥" HorizontalAlignment="Right" Width="286" />
+                        <local:IconTextBlock x:Name="TextBlock_MSVoice" Margin="0,186,161,0" IconGlyph="&#xF466;" Text="微软语音包" VerticalAlignment="Top" HorizontalAlignment="Right" Width="129"/>
+                        <ComboBox x:Name="ComboBox_MSVoice" Margin="535,202,10,0" VerticalAlignment="Top" ToolTip="选择使用的语音包" SelectionChanged="ComboBox_PostMethod_SelectionChanged">
+                            <ComboBoxItem Content="晓晓"/>
+                            <ComboBoxItem Content="云希"/>
+                            <ComboBoxItem Content="云健"/>
+                            <ComboBoxItem Content="晓伊"/>
+                            <ComboBoxItem Content="云扬"/>
+                            <ComboBoxItem Content="晓辰"/>
+                            <ComboBoxItem Content="晓涵"/>
+                            <ComboBoxItem Content="晓梦"/>
+                            <ComboBoxItem Content="晓墨"/>
+                            <ComboBoxItem Content="晓秋"/>
+                            <ComboBoxItem Content="晓睿"/>
+                            <ComboBoxItem Content="晓双 - 童声"/>
+                            <ComboBoxItem Content="晓萱"/>
+                            <ComboBoxItem Content="晓颜"/>
+                            <ComboBoxItem Content="晓悠 - 童声"/>
+                            <ComboBoxItem Content="晓甄"/>
+                            <ComboBoxItem Content="云枫"/>
+                            <ComboBoxItem Content="云皓"/>
+                            <ComboBoxItem Content="云夏"/>
+                            <ComboBoxItem Content="云野"/>
+                            <ComboBoxItem Content="云泽"/>
+                            <ComboBoxItem Content="云登 - 中原官话 河南" ToolTip="中原官话 河南" />
+                            <ComboBoxItem Content="晓北 - 东北话" ToolTip="东北话"/>
+                            <ComboBoxItem Content="晓妮 - 中原官话 陕西" ToolTip="中原官话 陕西" />
+                            <ComboBoxItem Content="云翔 - 冀鲁官话" ToolTip="冀鲁官话" />
+                            <ComboBoxItem Content="云希 - 西南官话" ToolTip="西南官话" />
+                            <ComboBoxItem Content="XiaoMin - 粤语 简体" ToolTip="粤语 简体" />
+                            <ComboBoxItem Content="YunSong - 粤语 简体" ToolTip="粤语 简体" />
+                            <ComboBoxItem Content="晓曼 - 粤语 繁体" ToolTip="粤语 繁体" />
+                            <ComboBoxItem Content="云龙 - 粤语 繁体" ToolTip="粤语 繁体" />
+                            <ComboBoxItem Content="晓佳 - 粤语 繁体" ToolTip="粤语 繁体" />
+                            <ComboBoxItem Content="晓臻 - 台湾普通话" ToolTip="台湾普通话" />
+                            <ComboBoxItem Content="云哲 - 台湾普通话" ToolTip="台湾普通话" />
+                            <ComboBoxItem Content="晓雨 - 台湾普通话" ToolTip="台湾普通话" />
+                            <ComboBoxItem Content="Xiaotong - 吴语" ToolTip="吴语" />
+                            <ComboBoxItem Content="YunZhe - 吴语" ToolTip="吴语" />
+                        </ComboBox>
                         <Button x:Name="Button_ClearCache" Margin="0,0,85,5" HorizontalAlignment="Right" Width="75" Click="Button_ClearCache_Click" Height="25" VerticalAlignment="Bottom">
                             <local:IconTextBlock IconGlyph="&#xF2ED;" Text="清理缓存"/>
                         </Button>

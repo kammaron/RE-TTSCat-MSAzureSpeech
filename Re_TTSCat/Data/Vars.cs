@@ -22,6 +22,45 @@ namespace Re_TTSCat.Data
         public static readonly string AudioLibraryFileName = Path.Combine(ConfDir, "NAudio.dll");
         public static readonly Version CurrentVersion = new Version("3.10.2.726");
         public static readonly string ManagementWindowDefaultTitle = "Re: TTSCat - 插件管理";
+        public static readonly string[] MSVoiceMap =
+            {
+                "zh-CN-XiaoxiaoNeural",
+                "zh-CN-YunxiNeural",
+                "zh-CN-YunjianNeural",
+                "zh-CN-XiaoyiNeural",
+                "zh-CN-YunyangNeural",
+                "zh-CN-XiaochenNeural",
+                "zh-CN-XiaohanNeural",
+                "zh-CN-XiaomengNeural",
+                "zh-CN-XiaomoNeural",
+                "zh-CN-XiaoqiuNeural",
+                "zh-CN-XiaoruiNeural",
+                "zh-CN-XiaoshuangNeural",
+                "zh-CN-XiaoxuanNeural",
+                "zh-CN-XiaoyanNeural",
+                "zh-CN-XiaoyouNeural",
+                "zh-CN-XiaozhenNeural",
+                "zh-CN-YunfengNeural",
+                "zh-CN-YunhaoNeural",
+                "zh-CN-YunxiaNeural",
+                "zh-CN-YunyeNeural",
+                "zh-CN-YunzeNeural",
+                "zh-CN-henan-YundengNeural",
+                "zh-CN-liaoning-XiaobeiNeural",
+                "zh-CN-shaanxi-XiaoniNeural",
+                "zh-CN-shandong-YunxiangNeural",
+                "zh-CN-sichuan-YunxiNeural",
+                "yue-CN-XiaoMinNeural",
+                "yue-CN-YunSongNeural",
+                "zh-HK-HiuMaanNeural",
+                "zh-HK-WanLungNeural",
+                "zh-HK-HiuGaaiNeural",
+                "zh-TW-HsiaoChenNeural",
+                "zh-TW-YunJheNeural",
+                "zh-TW-HsiaoYuNeural",
+                "wuu-CN-XiaotongNeural",
+                "wuu-CN-YunzheNeural"
+            };
 
         public static Conf CurrentConf = new Conf();
         public static Thread Player;
@@ -37,5 +76,6 @@ namespace Re_TTSCat.Data
         public static string CacheDir => CurrentConf?.SaveCacheInTempDir == false ? DefaultCacheDir : CacheDirTemp;
         public static string ApiBaiduAiAccessToken = string.Empty;
         public static GiftDebouncer Debouncer = new GiftDebouncer();
+
     }
 }

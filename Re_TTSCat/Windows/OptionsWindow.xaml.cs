@@ -350,6 +350,9 @@ namespace Re_TTSCat.Windows
             Vars.CurrentConf.PostData = TextBox_PostData.Text;
             Vars.CurrentConf.BaiduApiKey = TextBox_BaiduApiKey.Text;
             Vars.CurrentConf.BaiduApiSecretKey = TextBox_BaiduApiSecretKey.Password;
+            Vars.CurrentConf.MSSpeechRegion = TextBox_MSSpeechRegion.Text;
+            Vars.CurrentConf.MSSpeechKey = TextBox_MSSpeechKey.Password;
+            Vars.CurrentConf.MSVoice = (byte)ComboBox_MSVoice.SelectedIndex;
             try
             {
                 Vars.CurrentConf.Headers = JsonConvert.DeserializeObject<List<Header>>(TextBox_Headers.Text);
@@ -444,6 +447,9 @@ namespace Re_TTSCat.Windows
             TextBox_HTTPAuthPassword.Password = Vars.CurrentConf.HttpAuthPassword;
             TextBox_BaiduApiKey.Text = Vars.CurrentConf.BaiduApiKey;
             TextBox_BaiduApiSecretKey.Password = Vars.CurrentConf.BaiduApiSecretKey;
+            TextBox_MSSpeechRegion.Text = Vars.CurrentConf.MSSpeechRegion;
+            TextBox_MSSpeechKey.Password = Vars.CurrentConf.MSSpeechKey;
+            ComboBox_MSVoice.SelectedIndex = Vars.CurrentConf.MSVoice;
             ComboBox_Engine.SelectedIndex = Vars.CurrentConf.Engine;
             ComboBox_Person.SelectedIndex = Vars.CurrentConf.SpeechPerson;
             ComboBox_PostMethod.SelectedIndex = (int)Vars.CurrentConf.ReqType;
