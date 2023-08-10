@@ -76,6 +76,5 @@ namespace Re_TTSCat.Data
         public static string CacheDir => CurrentConf?.SaveCacheInTempDir == false ? DefaultCacheDir : CacheDirTemp;
         public static string ApiBaiduAiAccessToken = string.Empty;
         public static GiftDebouncer Debouncer = new GiftDebouncer();
-
     }
 }

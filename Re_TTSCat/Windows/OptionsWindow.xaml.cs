@@ -933,7 +933,7 @@ namespace Re_TTSCat.Windows
 
         private void Hyperlink_Click_3(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://www.bilibili.com/video/BV12N411h7yC/");
+            Process.Start("https://www.bilibili.com/video/TBD/");
         }
     }
 }
