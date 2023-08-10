@@ -930,5 +930,10 @@ namespace Re_TTSCat.Windows
         {
             Process.Start("https://ai.baidu.com/tech/speech/tts_online");
         }
+
+        private void Hyperlink_Click_3(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://www.bilibili.com/video/BV12N411h7yC/");
+        }
     }
 }
