@@ -22,7 +22,7 @@ namespace Re_TTSCat
                 var fileOutput = AudioConfig.FromWavFileOutput(fileName);
                 Bridge.ALog($"(E5) 正在下载 TTS, 文件名: {fileName}, 方法: {Vars.CurrentConf.ReqType}");
 
-                var config = SpeechConfig.FromSubscription("c32e4db1b5234902a80e16cb70a94c43", "eastasia");
+                var config = SpeechConfig.FromSubscription(Vars.CurrentConf.MSSpeechKey, Vars.CurrentConf.MSSpeechRegion);
 
                 // Set the voice name, refer to https://aka.ms/speech/voices/neural for full list.
                 config.SpeechSynthesisVoiceName = Vars.MSVoiceMap[Vars.CurrentConf.MSVoice];// "zh-CN-XiaoshuangNeural";
