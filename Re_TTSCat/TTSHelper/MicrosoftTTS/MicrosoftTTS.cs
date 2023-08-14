@@ -12,6 +12,16 @@ namespace Re_TTSCat
 {
     public static partial class MicrosoftTTS
     {
+        private static string ConverNumToPercent(int num)
+        {
+            string ret = "";
+            if (num >= 0) { ret += "+" };
+
+            ret += num.ToString();
+            ret += "0.00%";
+            return ret;
+        }
+
         public static async Task<string> Download(string content)
         {
             var errorCount = 0;
@@ -21,37 +31,25 @@ namespace Re_TTSCat
                 var fileName = Path.Combine(Vars.CacheDir, Conf.GetRandomFileName() + "USER.mp3");
                 var fileOutput = AudioConfig.FromWavFileOutput(fileName);
                 Bridge.ALog($"(E5) 正在下载 TTS, 文件名: {fileName}, 方法: {Vars.CurrentConf.ReqType}");
-
-                var config = SpeechConfig.FromSubscription(Vars.CurrentConf.MSSpeechKey, Vars.CurrentConf.MSSpeechRegion);
-
-                // Set the voice name, refer to https://aka.ms/speech/voices/neural for full list.
-                config.SpeechSynthesisVoiceName = Vars.MSVoiceMap[Vars.CurrentConf.MSVoice];// "zh-CN-XiaoshuangNeural";
-                config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio16Khz128KBitRateMonoMp3);
                 string text = System.Web.HttpUtility.UrlDecode(content, Encoding.GetEncoding("UTF-8"));
                 text = text.Replace(" ", "");
 
-                using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
-                {
-                    using (var result = await synthesizer.SpeakTextAsync(text))
-                    {
-                        if (result.Reason == ResultReason.SynthesizingAudioCompleted)
-                        {
-                            Console.WriteLine($"Speech synthesized to speaker for text [{text}]");
-                        }
-                        else if (result.Reason == ResultReason.Canceled)
-                        {
-                            var cancellation = SpeechSynthesisCancellationDetails.FromResult(result);
-                            Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
+                var config = SpeechConfig.FromSubscription(Vars.CurrentConf.MSSpeechKey, Vars.CurrentConf.MSSpeechRegion);
+                config.SpeechSynthesisVoiceName = Vars.MSVoiceMap[Vars.CurrentConf.MSVoice];// "zh-CN-XiaoshuangNeural";
+                config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio16Khz128KBitRateMonoMp3);
+                var speed = ConverNumToPercent(Vars.CurrentConf.ReadSpeed);
+                var pitch = ConverNumToPercent(Vars.CurrentConf.SpeechPitch);
 
-                            if (cancellation.Reason == CancellationReason.Error)
-                            {
-                                Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
-                                Console.WriteLine($"CANCELED: ErrorDetails=[{cancellation.ErrorDetails}]");
-                                Console.WriteLine($"CANCELED: Did you update the subscription info?");
-                            }
-                        }
-                    }
+                using (var speechSynthesizer = new SpeechSynthesizer(config, fileOutput))
+                {
+                    var ssml = File.ReadAllText(Vars.MSSSMLExampleFile);
+                    ssml = ssml.Replace("$CONTENT$", text);
+                    ssml = ssml.Replace("$SPEED$", speed);
+                    ssml = ssml.Replace("$PITCH$", pitch);
+                    ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[Vars.CurrentConf.MSVoice]);
+                    var result = await speechSynthesizer.SpeakSsmlAsync(ssml);
                 }
+
                 using (var reader = new AudioFileReader(fileName)) { }
 
                 return fileName;

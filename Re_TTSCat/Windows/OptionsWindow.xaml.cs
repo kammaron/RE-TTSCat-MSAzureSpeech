@@ -863,12 +863,22 @@ namespace Re_TTSCat.Windows
                 ComboBox_Person.IsEnabled = true;
                 Slider_TTSPitch.IsEnabled = true;
             }
+            else if (ComboBox_Engine.SelectedIndex == 7)
+            {
+                Slider_TTSPitch.IsEnabled = true;
+                ComboBox_Person.IsEnabled = false;
+            }
             else
             {
                 ComboBox_Person.IsEnabled = false;
                 Slider_TTSPitch.IsEnabled = false;
             }
-            if (ComboBox_Engine.SelectedIndex == 6 || ComboBox_Engine.SelectedIndex == 1) Slider_TTSSpeed.IsEnabled = true;
+            if (ComboBox_Engine.SelectedIndex == 6
+                || ComboBox_Engine.SelectedIndex == 1
+                || ComboBox_Engine.SelectedIndex == 7)
+            {
+                Slider_TTSSpeed.IsEnabled = true;
+            }
             else Slider_TTSSpeed.IsEnabled = false;
         }
 
