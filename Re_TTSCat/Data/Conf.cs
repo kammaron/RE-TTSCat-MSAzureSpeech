@@ -337,6 +337,8 @@ namespace Re_TTSCat.Data
 
         public byte MSVoice { get; set; }
 
+        public string MSVoiceStyle { get; set; }
+
         /// <summary>
         /// 语音答复规则列表
         /// </summary>

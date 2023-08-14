@@ -40,10 +40,16 @@ namespace Re_TTSCat
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio16Khz128KBitRateMonoMp3);
                 var speed = ConverNumToPercent(Vars.CurrentConf.ReadSpeed);
                 var pitch = ConverNumToPercent(Vars.CurrentConf.SpeechPitch);
+                var style = Vars.CurrentConf.MSVoiceStyle;
+                if (style == "")
+                {
+                    style = "default";
+                }
 
                 using (var speechSynthesizer = new SpeechSynthesizer(config, fileOutput))
                 {
                     var ssml = Vars.MSSSMLExample;
+                    ssml = ssml.Replace("$STYLE$", style);
                     ssml = ssml.Replace("$SPEED$", speed);
                     ssml = ssml.Replace("$PITCH$", pitch);
                     ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[Vars.CurrentConf.MSVoice]);

@@ -78,6 +78,7 @@ namespace Re_TTSCat.Data
             MSSpeechKey = "";
             MSSpeechRegion = "";
             MSVoice = 0;
+            MSVoiceStyle = "";
             Headers = new List<Header>();
             ReqType = RequestType.JustGet;
             PostData = "";
