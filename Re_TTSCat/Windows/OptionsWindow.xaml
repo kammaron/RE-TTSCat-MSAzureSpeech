@@ -499,7 +499,7 @@
                         <TextBox x:Name="TextBox_BaiduApiKey" FontFamily="Consolas" VerticalAlignment="Top" Margin="0,20,5,0" ToolTip="百度高级版引擎的 API 公钥" HorizontalAlignment="Right" Width="286" />
                         <local:IconTextBlock x:Name="TextBlock_BaiduApiSecretKey" Margin="0,41,161,0" IconGlyph="&#xF084;" Text="百度高级版 API 私钥" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
                         <PasswordBox x:Name="TextBox_BaiduApiSecretKey" VerticalAlignment="Top" Margin="0,56,5,0" ToolTip="百度高级版引擎的 API 私钥" HorizontalAlignment="Right" Width="286" />
-                        <local:IconTextBlock x:Name="TextBlock_MSSpeechRegion" Margin="0,115,161,0" IconGlyph="&#xF0C1;" Text="微软服务接入点" ToolTip="Enabled by kammaron@bilibi" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
+                        <local:IconTextBlock x:Name="TextBlock_MSSpeechRegion" Margin="0,115,161,0" IconGlyph="&#xF0C1;" Text="微软服务接入点" ToolTip="Enabled by kammaron@bilibili" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
                         <TextBox x:Name="TextBox_MSSpeechRegion" FontFamily="Consolas" VerticalAlignment="Top" Margin="0,131,5,0" ToolTip="微软服务接入点" HorizontalAlignment="Right" Width="286" />
                         <TextBlock Margin="0,115,5,0" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <Hyperlink Click="Hyperlink_Click_3" ToolTip="观看视频教程">教程 By kammaron@bilibili</Hyperlink>
