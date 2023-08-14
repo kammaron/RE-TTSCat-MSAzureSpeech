@@ -19,10 +19,10 @@ namespace Re_TTSCat.Data
         public static readonly string DefaultCacheDir = Path.Combine(ConfDir, "Cache");
         public static readonly string CacheDirTemp = Path.Combine(Path.GetTempPath(), "Re-TTSCat TTS Cache");
         public static readonly string ConfFileName = Path.Combine(ConfDir, "Config.json");
-        public static readonly string MSSSMLExampleFile = Path.Combine(ConfDir, "SSML_Example.xml");
         public static readonly string AudioLibraryFileName = Path.Combine(ConfDir, "NAudio.dll");
         public static readonly Version CurrentVersion = new Version("3.10.2.726");
         public static readonly string ManagementWindowDefaultTitle = "Re: TTSCat - 插件管理";
+        public static readonly string MSSSMLExample = "<speak xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xmlns:emo=\"http://www.w3.org/2009/10/emotionml\" version=\"1.0\" xml:lang=\"zh-CN\"><voice name=\"$VOICE$\"><s /><express-as style=\"default\"><prosody rate=\"$SPEED$\" pitch=\"$PITCH$\">$CONTENT$</prosody></express-as><s /></voice></speak>";
         public static readonly string[] MSVoiceMap =
             {
                 "zh-CN-XiaoxiaoNeural",

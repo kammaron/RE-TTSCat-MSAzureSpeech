@@ -15,10 +15,11 @@ namespace Re_TTSCat
         private static string ConverNumToPercent(int num)
         {
             string ret = "";
-            if (num >= 0) { ret += "+" };
+            if (num >= 0) { ret += "+"; }
 
+            num *= 10;
             ret += num.ToString();
-            ret += "0.00%";
+            ret += "%";
             return ret;
         }
 
@@ -42,11 +43,11 @@ namespace Re_TTSCat
 
                 using (var speechSynthesizer = new SpeechSynthesizer(config, fileOutput))
                 {
-                    var ssml = File.ReadAllText(Vars.MSSSMLExampleFile);
-                    ssml = ssml.Replace("$CONTENT$", text);
+                    var ssml = Vars.MSSSMLExample;
                     ssml = ssml.Replace("$SPEED$", speed);
                     ssml = ssml.Replace("$PITCH$", pitch);
                     ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[Vars.CurrentConf.MSVoice]);
+                    ssml = ssml.Replace("$CONTENT$", text);
                     var result = await speechSynthesizer.SpeakSsmlAsync(ssml);
                 }
 
