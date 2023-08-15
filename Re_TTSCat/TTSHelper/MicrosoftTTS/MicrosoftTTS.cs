@@ -38,22 +38,29 @@ namespace Re_TTSCat
                 var config = SpeechConfig.FromSubscription(Vars.CurrentConf.MSSpeechKey, Vars.CurrentConf.MSSpeechRegion);
                 config.SpeechSynthesisVoiceName = Vars.MSVoiceMap[Vars.CurrentConf.MSVoice];// "zh-CN-XiaoshuangNeural";
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio16Khz128KBitRateMonoMp3);
+
                 var speed = ConverNumToPercent(Vars.CurrentConf.ReadSpeed);
                 var pitch = ConverNumToPercent(Vars.CurrentConf.SpeechPitch);
                 var style = Vars.CurrentConf.MSVoiceStyle;
+                var ssml = Vars.MSSSMLExample;
+                var msStyleNodeBeg = "<mstts:express-as style=\"$STYLE$\">";
+                var msStyleNodeEnd = "</mstts:express-as>";
                 if (style == "")
                 {
-                    style = "default";
+                    ssml = ssml.Replace(msStyleNodeBeg, "");
+                    ssml = ssml.Replace(msStyleNodeEnd, "");
                 }
+                else
+                {
+                    ssml = ssml.Replace("$STYLE$", style);
+                }
+                ssml = ssml.Replace("$SPEED$", speed);
+                ssml = ssml.Replace("$PITCH$", pitch);
+                ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[Vars.CurrentConf.MSVoice]);
+                ssml = ssml.Replace("$CONTENT$", text);
 
                 using (var speechSynthesizer = new SpeechSynthesizer(config, fileOutput))
                 {
-                    var ssml = Vars.MSSSMLExample;
-                    ssml = ssml.Replace("$STYLE$", style);
-                    ssml = ssml.Replace("$SPEED$", speed);
-                    ssml = ssml.Replace("$PITCH$", pitch);
-                    ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[Vars.CurrentConf.MSVoice]);
-                    ssml = ssml.Replace("$CONTENT$", text);
                     var result = await speechSynthesizer.SpeakSsmlAsync(ssml);
                 }
 
