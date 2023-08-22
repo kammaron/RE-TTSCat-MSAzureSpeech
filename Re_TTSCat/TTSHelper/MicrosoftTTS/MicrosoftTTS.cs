@@ -7,6 +7,7 @@ using NAudio.Wave;
 using Re_TTSCat.Data;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
+using System.Text.RegularExpressions;
 
 namespace Re_TTSCat
 {
@@ -23,6 +24,36 @@ namespace Re_TTSCat
             return ret;
         }
 
+        private static int IdentifyVoiceByCommand(string str)
+        {
+            if (Regex.IsMatch(str, @":[!！].*-\d{1,2}$"))
+            {
+                string[] strArr = str.Split('-');
+                string numOfVoice = strArr[strArr.Length - 1];
+                int ret = 0;
+                bool parseSucceed = int.TryParse(numOfVoice, out ret);
+                if (parseSucceed && ret >=0 && ret < Vars.MSVoiceMap.Length)
+                {
+                    return ret;
+                }
+            }
+            return -1;
+        }
+
+        private static string RemoveCommandFromText(string str)
+        {
+            str = str.Replace("!", "").Replace("！", "");
+            int lastHyphen = str.LastIndexOf('-');
+            if (lastHyphen >= 0)
+            {
+                return str.Substring(0, lastHyphen);
+            }
+            else
+            {
+                return str;
+            }
+        }
+
         public static async Task<string> Download(string content)
         {
             var errorCount = 0;
@@ -33,10 +64,14 @@ namespace Re_TTSCat
                 var fileOutput = AudioConfig.FromWavFileOutput(fileName);
                 Bridge.ALog($"(E5) 正在下载 TTS, 文件名: {fileName}, 方法: {Vars.CurrentConf.ReqType}");
                 string text = System.Web.HttpUtility.UrlDecode(content, Encoding.GetEncoding("UTF-8"));
-                text = text.Replace(" ", "");
+                text = text.Replace(" ", "").Trim();
+                int voiceNum = IdentifyVoiceByCommand(text);
+                if (voiceNum >= 0)
+                {
+                    text = RemoveCommandFromText(text);
+                }
 
                 var config = SpeechConfig.FromSubscription(Vars.CurrentConf.MSSpeechKey, Vars.CurrentConf.MSSpeechRegion);
-                config.SpeechSynthesisVoiceName = Vars.MSVoiceMap[Vars.CurrentConf.MSVoice];// "zh-CN-XiaoshuangNeural";
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio16Khz128KBitRateMonoMp3);
 
                 var speed = ConverNumToPercent(Vars.CurrentConf.ReadSpeed);
@@ -45,7 +80,8 @@ namespace Re_TTSCat
                 var ssml = Vars.MSSSMLExample;
                 var msStyleNodeBeg = "<mstts:express-as style=\"$STYLE$\">";
                 var msStyleNodeEnd = "</mstts:express-as>";
-                if (style == "")
+                if (style == ""
+                    || voiceNum != Vars.CurrentConf.MSVoice)
                 {
                     ssml = ssml.Replace(msStyleNodeBeg, "");
                     ssml = ssml.Replace(msStyleNodeEnd, "");
@@ -56,7 +92,14 @@ namespace Re_TTSCat
                 }
                 ssml = ssml.Replace("$SPEED$", speed);
                 ssml = ssml.Replace("$PITCH$", pitch);
-                ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[Vars.CurrentConf.MSVoice]);
+                if (voiceNum >= 0)
+                {
+                    ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[voiceNum]);
+                }
+                else
+                {
+                    ssml = ssml.Replace("$VOICE$", Vars.MSVoiceMap[Vars.CurrentConf.MSVoice]);
+                }
                 ssml = ssml.Replace("$CONTENT$", text);
 
                 using (var speechSynthesizer = new SpeechSynthesizer(config, fileOutput))
