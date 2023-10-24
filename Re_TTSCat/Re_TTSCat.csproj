@@ -1,249 +1,64 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B4D36327-410A-4192-B0A0-EC4FF5784817}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <RootNamespace>Re_TTSCat</RootNamespace>
-    <AssemblyName>Re_TTSCat</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net461</TargetFramework>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <AssemblyTitle>Re: TTSCat</AssemblyTitle>
+    <Company>Elepover</Company>
+    <Product>Re: TTSCat</Product>
+    <Description>Re: TTSCat - 读弹幕姬</Description>
+    <Copyright>Copyright © 2017 - 2021 Elepover</Copyright>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0.0</FileVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <LangVersion>11</LangVersion>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <PackageReference IncludeAssets="compile" />
+    <Reference>
+      <Private>False</Private>
+    </Reference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="1.9.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="BilibiliDM_PluginFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Libs\BilibiliDM_PluginFramework.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BilibiliDM_PluginFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CognitiveServices.Speech.csharp, Version=1.30.0.28, Culture=neutral, PublicKeyToken=d2e6dcccb609e663, processorArchitecture=MSIL">
+      <HintPath>..\Libs\Microsoft.CognitiveServices.Speech.csharp.dll</HintPath>
+      <Private>True</Private>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Microsoft.CognitiveServices.Speech.csharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NAudio.1.9.0\lib\net35\NAudio.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\AssemblyComparer.cs" />
-    <Compile Include="Data\Bridge.ALog.cs" />
-    <Compile Include="Data\Conf.CheckDanmakuLength.cs" />
-    <Compile Include="Data\Conf.CheckKeywordEligibility.cs" />
-    <Compile Include="Data\Conf.CheckGiftEligibility.cs" />
-    <Compile Include="Data\Conf.CheckWildcard.cs" />
-    <Compile Include="Data\Conf.GetRandomBool.cs" />
-    <Compile Include="Data\Conf.Delay.cs" />
-    <Compile Include="Data\Conf.GetRandomFileName.cs" />
-    <Compile Include="Data\Conf.CheckUserEligibility.cs" />
-    <Compile Include="Data\Conf.VerifyLibraryIntegrity.cs" />
-    <Compile Include="Data\Extensions.float.IsNearEnough.cs" />
-    <Compile Include="Data\GiftDebouncer.cs" />
-    <Compile Include="Data\Header.cs" />
-    <Compile Include="Data\PlaybackDeviceWrapper.cs" />
-    <Compile Include="Data\RequestType.cs" />
-    <Compile Include="Data\SecureRng\SecureRng.cs" />
-    <Compile Include="Data\SecureRng\SecureRng.GenerateRandomBytes.cs" />
-    <Compile Include="Data\SecureRng\SecureRng.GetRandomUInt.cs" />
-    <Compile Include="Data\SecureRng\SecureRng.Next.cs" />
-    <Compile Include="Data\Extensions.StoryBoard.BeginAsync.cs" />
-    <Compile Include="Data\UserGift.cs" />
-    <Compile Include="Data\VoiceReplyRule.cs" />
-    <Compile Include="Data\VoiceReplyRule.Matches.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\InteractRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\WarningRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\SuperChatRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\WelcomeGuardRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\WelcomeRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\LiveEndRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\LiveStartRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\GuardBuyRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\GiftRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\CommentRoute.cs" />
-    <Compile Include="EventsHandler\Main.OnGiftDebounced.cs" />
-    <Compile Include="EventsHandler\Main.OnReceivedDanmaku.cs" />
-    <Compile Include="EventsHandler\Main.OnReceivedRoomCount.cs" />
-    <Compile Include="EventsHandler\Main.OnDisconnected.cs" />
-    <Compile Include="EventsHandler\Main.OnConnected.cs" />
-    <Compile Include="EventsHandler\VariableHelper\Preprocess.cs" />
-    <Compile Include="EventsHandler\VariableHelper\ProcessInteract.cs" />
-    <Compile Include="EventsHandler\VariableHelper\ProcessVoiceReply.cs" />
-    <Compile Include="EventsHandler\VariableHelper\ProcessSuperChat.cs" />
-    <Compile Include="EventsHandler\VariableHelper\ProcessGift.cs" />
-    <Compile Include="EventsHandler\VariableHelper\ProcessDanmaku.cs" />
-    <Compile Include="KruinUpdates\Update.GetLatestUpd.cs" />
-    <Compile Include="KruinUpdates\Update.cs" />
-    <Compile Include="KruinUpdates\CheckIfLatest.cs" />
-    <Compile Include="KruinUpdates\Update.HttpGet.cs" />
-    <Compile Include="Main.ALog.cs" />
-    <Compile Include="Main.GlobalErrorHandler.cs" />
-    <Compile Include="Main.Inited.cs" />
-    <Compile Include="Data\Bridge.cs" />
-    <Compile Include="Data\Bridge.Log.cs" />
-    <Compile Include="Data\Conf.cs" />
-    <Compile Include="Data\Conf.InitiateAsync.cs" />
-    <Compile Include="Data\Conf.New.cs" />
-    <Compile Include="Data\Conf.ReadAsync.cs" />
-    <Compile Include="Data\Conf.SaveAsync.cs" />
-    <Compile Include="Data\Vars.cs" />
-    <Compile Include="Main.New.cs" />
-    <Compile Include="Main.DeInit.cs" />
-    <Compile Include="Main.Admin.cs" />
-    <Compile Include="Main.Stop.cs" />
-    <Compile Include="Main.Start.cs" />
-    <Compile Include="Main.UpdateThread.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="TTSHelper\BaiduTTS\BaiduTTS.AiApi.Download.cs" />
-    <Compile Include="TTSHelper\BaiduTTS\BaiduTTS.AiApi.ParseToSpeechPerson.cs" />
-    <Compile Include="TTSHelper\BaiduTTS\BaiduTTS.AiApi.SpeechPerson.cs" />
-    <Compile Include="TTSHelper\BaiduTTS\BaiduTTS.ConvertSpeed.cs" />
-    <Compile Include="TTSHelper\CustomTTS\CustomTTS.Download.cs" />
-    <Compile Include="TTSHelper\BaiduTTS\BaiduTTS.Download.cs" />
-    <Compile Include="TTSHelper\FrameworkTTS\FrameworkTTS.Download.cs" />
-    <Compile Include="TTSHelper\GoogleTTS\GoogleTTS.cs" />
-    <Compile Include="TTSHelper\MicrosoftTTS\MicrosoftTTS.cs" />
-    <Compile Include="TTSHelper\TTSEntry.cs" />
-    <Compile Include="TTSHelper\TTSPlayer.Init.cs" />
-    <Compile Include="TTSHelper\TTSPlayer.PlayVoiceReply.cs" />
-    <Compile Include="TTSHelper\TTSPlayer.UnifiedPlay.cs" />
-    <Compile Include="TTSHelper\TTSPlayer.PlayerThread.cs" />
-    <Compile Include="TTSHelper\TTSPlayer.Play.cs" />
-    <Compile Include="TTSHelper\TTSPlayer.cs" />
-    <Compile Include="TTSHelper\YoudaoTTS\YoudaoTTS.Download.cs" />
-    <Compile Include="Windows\AsyncDialog.cs" />
-    <Compile Include="Windows\CriticalErrorWindow.xaml.cs">
-      <DependentUpon>CriticalErrorWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\DonateWindow.xaml.cs">
-      <DependentUpon>DonateWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\IconTextBlock.xaml.cs">
-      <DependentUpon>IconTextBlock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LoadingSpinner.xaml.cs">
-      <DependentUpon>LoadingSpinner.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LoadingWindowLight.xaml.cs">
-      <DependentUpon>LoadingWindowLight.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\OptionsWindow.xaml.cs">
-      <DependentUpon>OptionsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\TestVoiceReplyParamsWindow.xaml.cs">
-      <DependentUpon>TestVoiceReplyParamsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\UpdateWindow.xaml.cs">
-      <DependentUpon>UpdateWindow.xaml</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Windows\CriticalErrorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\DonateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\IconTextBlock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LoadingSpinner.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LoadingWindowLight.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\OptionsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\TestVoiceReplyParamsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\UpdateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\avatar.png" />
@@ -258,12 +73,4 @@
   <ItemGroup>
     <Resource Include="Resources\qrcode_pay.png" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
 </Project>
