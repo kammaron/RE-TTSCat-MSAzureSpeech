@@ -246,7 +246,7 @@ namespace Re_TTSCat.Windows
 
         private void UpdateStatsThread()
         {
-            
+
             while (!windowClosed)
             {
                 Dispatcher.Invoke(() => UpdateStats());
@@ -353,6 +353,7 @@ namespace Re_TTSCat.Windows
             Vars.CurrentConf.MSSpeechRegion = TextBox_MSSpeechRegion.Text;
             Vars.CurrentConf.MSSpeechKey = TextBox_MSSpeechKey.Password;
             Vars.CurrentConf.MSVoice = (byte)ComboBox_MSVoice.SelectedIndex;
+            Vars.CurrentConf.MSVoiceQuality = (byte)ComboBox_MSVoice_Quality.SelectedIndex;
             try
             {
                 Vars.CurrentConf.Headers = JsonConvert.DeserializeObject<List<Header>>(TextBox_Headers.Text);
@@ -450,6 +451,7 @@ namespace Re_TTSCat.Windows
             TextBox_MSSpeechRegion.Text = Vars.CurrentConf.MSSpeechRegion;
             TextBox_MSSpeechKey.Password = Vars.CurrentConf.MSSpeechKey;
             ComboBox_MSVoice.SelectedIndex = Vars.CurrentConf.MSVoice;
+            ComboBox_MSVoice_Quality.SelectedIndex = Vars.CurrentConf.MSVoiceQuality;
             ComboBox_Engine.SelectedIndex = Vars.CurrentConf.Engine;
             ComboBox_Person.SelectedIndex = Vars.CurrentConf.SpeechPerson;
             ComboBox_PostMethod.SelectedIndex = (int)Vars.CurrentConf.ReqType;
@@ -604,7 +606,7 @@ namespace Re_TTSCat.Windows
             Slider_DMLengthLimit.Maximum = Slider_DMLengthLimitMax.Value;
             Slider_DMLengthLimitMax.Minimum = Slider_DMLengthLimit.Value;
         }
-        
+
         private async Task OnLoad(object sender, RoutedEventArgs e)
         {
             await Conf.InitiateAsync();

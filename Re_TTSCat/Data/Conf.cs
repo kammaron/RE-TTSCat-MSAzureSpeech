@@ -337,6 +337,8 @@ namespace Re_TTSCat.Data
 
         public byte MSVoice { get; set; }
 
+        public byte MSVoiceQuality { get; set; }
+
         public string MSVoiceStyle { get; set; }
 
         /// <summary>

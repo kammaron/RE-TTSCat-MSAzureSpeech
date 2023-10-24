@@ -1,5 +1,6 @@
 ﻿// Created by kammaron@bilibili kammaron@github
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,13 @@ namespace Re_TTSCat
             }
         }
 
+        private static readonly List<SpeechSynthesisOutputFormat> Qualities = new()
+        {
+            SpeechSynthesisOutputFormat.Audio16Khz128KBitRateMonoMp3,
+            SpeechSynthesisOutputFormat.Audio24Khz160KBitRateMonoMp3,
+            SpeechSynthesisOutputFormat.Audio48Khz192KBitRateMonoMp3,
+        };
+
         public static async Task<string> Download(string content)
         {
             var errorCount = 0;
@@ -72,7 +80,7 @@ namespace Re_TTSCat
                 }
 
                 var config = SpeechConfig.FromSubscription(Vars.CurrentConf.MSSpeechKey, Vars.CurrentConf.MSSpeechRegion);
-                config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio16Khz128KBitRateMonoMp3);
+                config.SetSpeechSynthesisOutputFormat(Qualities[Vars.CurrentConf.MSVoiceQuality]);
 
                 var speed = ConverNumToPercent(Vars.CurrentConf.ReadSpeed);
                 var pitch = ConverNumToPercent(Vars.CurrentConf.SpeechPitch);
