@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
-using System.Windows.Forms;
 
 namespace Re_TTSCat.Data
 {
@@ -78,6 +77,7 @@ namespace Re_TTSCat.Data
             MSSpeechKey = "";
             MSSpeechRegion = "";
             MSVoice = 0;
+            MSVoiceQuality = 1;
             MSVoiceStyle = "";
             Headers = new List<Header>();
             ReqType = RequestType.JustGet;

@@ -504,10 +504,10 @@
                         <TextBlock Margin="0,115,5,0" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <Hyperlink Click="Hyperlink_Click_3" ToolTip="观看视频教程">教程 By kammaron@bilibili</Hyperlink>
                         </TextBlock>
-                        <local:IconTextBlock x:Name="TextBlock_MSSpeechKey" Margin="0,150,161,0" IconGlyph="&#xF084;" Text="微软服务密钥" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
-                        <PasswordBox x:Name="TextBox_MSSpeechKey" VerticalAlignment="Top" Margin="0,166,5,0" ToolTip="微软服务密钥" HorizontalAlignment="Right" Width="286" />
-                        <local:IconTextBlock x:Name="TextBlock_MSVoice" Margin="0,186,161,0" IconGlyph="&#xF466;" Text="微软语音包" VerticalAlignment="Top" HorizontalAlignment="Right" Width="129"/>
-                        <ComboBox x:Name="ComboBox_MSVoice" Margin="0,201,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="选择使用的语音包" SelectionChanged="ComboBox_PostMethod_SelectionChanged" Width="286">
+                        <local:IconTextBlock x:Name="TextBlock_MSSpeechKey" Margin="0,155,161,0" IconGlyph="&#xF084;" Text="微软服务密钥" VerticalAlignment="Top" HorizontalAlignment="Right" Width="130"/>
+                        <PasswordBox x:Name="TextBox_MSSpeechKey" VerticalAlignment="Top" Margin="0,171,5,0" ToolTip="微软服务密钥" HorizontalAlignment="Right" Width="286" />
+                        <local:IconTextBlock x:Name="TextBlock_MSVoice" Margin="0,195,161,0" IconGlyph="&#xF466;" Text="微软语音包" VerticalAlignment="Top" HorizontalAlignment="Right" Width="129"/>
+                        <ComboBox x:Name="ComboBox_MSVoice" Margin="0,211,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="选择使用的语音包" SelectionChanged="ComboBox_PostMethod_SelectionChanged" Width="286">
                             <ComboBoxItem Content="晓晓"/>
                             <ComboBoxItem Content="云希"/>
                             <ComboBoxItem Content="云健"/>
@@ -544,6 +544,12 @@
                             <ComboBoxItem Content="晓雨 - 台湾普通话" ToolTip="台湾普通话" />
                             <ComboBoxItem Content="Xiaotong - 吴语" ToolTip="吴语" />
                             <ComboBoxItem Content="YunZhe - 吴语" ToolTip="吴语" />
+                        </ComboBox>
+                        <local:IconTextBlock x:Name="TextBlock_MSVoice_Quality" Margin="0,235,161,0" IconGlyph="&#xF130;" Text="微软语音质量" VerticalAlignment="Top" HorizontalAlignment="Right" Width="129"/>
+                        <ComboBox x:Name="ComboBox_MSVoice_Quality" Margin="0,251,5,0" VerticalAlignment="Top" HorizontalAlignment="Right" ToolTip="选择使用的语音质量" SelectionChanged="ComboBox_PostMethod_SelectionChanged" Width="286">
+                            <ComboBoxItem Content="16Khz 128KBitRate Mp3"/>
+                            <ComboBoxItem Content="24Khz 160KBitRate Mp3"/>
+                            <ComboBoxItem Content="48Khz 192KBitRate Mp3"/>
                         </ComboBox>
                         <Button x:Name="Button_ClearCache" Margin="0,0,85,5" HorizontalAlignment="Right" Width="75" Click="Button_ClearCache_Click" Height="25" VerticalAlignment="Bottom">
                             <local:IconTextBlock IconGlyph="&#xF2ED;" Text="清理缓存"/>
