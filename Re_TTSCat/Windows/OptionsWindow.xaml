@@ -529,8 +529,17 @@
                             <ComboBoxItem Content="云夏"/>
                             <ComboBoxItem Content="云野"/>
                             <ComboBoxItem Content="云泽"/>
+                            <ComboBoxItem Content="晓辰 - 多语言"/>
+                            <ComboBoxItem Content="晓柔"/>
+                            <ComboBoxItem Content="晓晓 - 方言"/>
+                            <ComboBoxItem Content="晓晓 - 多语言"/>
+                            <ComboBoxItem Content="晓宇 - 多语言"/>
+                            <ComboBoxItem Content="云杰"/>
+                            <ComboBoxItem Content="云逸 - 多语言"/>
+                            <ComboBoxItem Content="云奇 - 广西口音普通话" ToolTip="广西口音普通话" />
                             <ComboBoxItem Content="云登 - 中原官话 河南" ToolTip="中原官话 河南" />
                             <ComboBoxItem Content="晓北 - 东北话" ToolTip="东北话"/>
+                            <ComboBoxItem Content="云彪 - 东北话" ToolTip="东北话"/>
                             <ComboBoxItem Content="晓妮 - 中原官话 陕西" ToolTip="中原官话 陕西" />
                             <ComboBoxItem Content="云翔 - 冀鲁官话" ToolTip="冀鲁官话" />
                             <ComboBoxItem Content="云希 - 西南官话" ToolTip="西南官话" />
